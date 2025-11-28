@@ -1,4 +1,4 @@
-# 📊 Minha Primeira API REST - Sistema de Gerenciamento de Marcas e Produtos
+# 📊 Primeiro projeto API REST - Sistema de Gerenciamento de Marcas e Produtos
 
 Uma API REST desenvolvida em **Spring Boot** para gerenciamento de marcas e produtos, com documentação interativa via **Swagger**.
 
