@@ -1,8 +1,177 @@
-## **design pattern** :deciduous_tree:
+# 📊 Minha Primeira API REST - Sistema de Gerenciamento de Marcas e Produtos
 
+Uma API REST desenvolvida em **Spring Boot** para gerenciamento de marcas e produtos, com documentação interativa via **Swagger**.
 
-Projeto Api Spring Rest com swagger
+## 🚀 Tecnologias Utilizadas
 
+- **Java 11**
+- **Spring Boot 2.5.5**
+- **Spring Data JPA**
+- **Spring Validation**
+- **Spring Web**
+- **PostgreSQL** (Produção)
+- **H2 Database** (Desenvolvimento)
+- **Swagger/SpringFox** (Documentação)
+- **Lombok**
+- **Maven**
 
+## 📋 Funcionalidades
 
-:smiley:
+### 🏷️ Gestão de Marcas
+- ✅ Listar todas as marcas
+- ✅ Criar nova marca
+- ✅ Atualizar marca existente
+- ✅ Excluir marca
+- ✅ Relacionamento com produtos
+
+### 📦 Gestão de Produtos
+- ✅ Listar todos os produtos
+- ✅ Criar novo produto
+- ✅ Atualizar produto existente
+- ✅ Excluir produto
+- ✅ Associação com marca
+
+## 🗃️ Modelo de Dados
+
+### Entidade `Marca`
+```java
+- id: Integer (PK)
+- marca: String
+- produto: List<Produto> (OneToMany)
+```
+
+### Entidade `Produto`
+```java
+- id: Integer (PK)
+- nome: String
+- categoria: String
+- preco: Double
+- marca: Marca (ManyToOne)
+```
+
+## 🔌 Endpoints da API
+
+### Marcas
+
+| Método | Endpoint | Descrição |
+|--------|----------|-----------|
+| `GET` | `/marca` | Lista todas as marcas |
+| `POST` | `/marca` | Cria uma nova marca |
+| `PUT` | `/marca` | Atualiza uma marca existente |
+| `DELETE` | `/marca/{id}` | Exclui uma marca por ID |
+
+### Produtos
+
+| Método | Endpoint | Descrição |
+|--------|----------|-----------|
+| `GET` | `/produto` | Lista todos os produtos |
+| `POST` | `/produto` | Cria um novo produto |
+| `PUT` | `/produto/{id}` | Atualiza um produto existente |
+| `DELETE` | `/produto/{id}` | Exclui um produto por ID |
+
+## 🛠️ Configuração e Execução
+
+### Pré-requisitos
+- Java 11
+- Maven
+- PostgreSQL (opcional para produção)
+
+### Configuração do Banco de Dados
+
+**Desenvolvimento (H2):**
+```properties
+# Configurado automaticamente pelo Spring Boot
+```
+
+**Produção (PostgreSQL):**
+```properties
+spring.datasource.url=jdbc:postgresql://localhost:5432/marcadb
+spring.datasource.username=postgres
+spring.datasource.password=123
+spring.jpa.hibernate.ddl-auto=update
+```
+
+### Executando a Aplicação
+
+1. **Clone o repositório:**
+```bash
+git clone <url-do-repositorio>
+```
+
+2. **Configure o banco de dados** (opcional para PostgreSQL)
+
+3. **Execute com Maven:**
+```bash
+./mvnw spring-boot:run
+```
+
+4. **Acesse a aplicação:**
+```
+http://localhost:8080
+```
+
+## 📚 Documentação da API
+
+A documentação interativa está disponível via **Swagger UI**:
+
+```
+http://localhost:8080/swagger-ui.html
+```
+
+### Características da Documentação:
+- 📖 Lista todos os endpoints
+- 🧪 Teste direto da API
+- 📝 Descrição detalhada dos modelos
+- 🔍 Estrutura de requests/responses
+
+## 🏗️ Estrutura do Projeto
+
+```
+src/
+├── main/
+│   ├── java/ProjetoDio/Marca/
+│   │   ├── Entidy/          # Entidades JPA
+│   │   ├── Model/           # Controllers
+│   │   ├── Service/         # Lógica de negócio
+│   │   ├── Repositoy/       # Repositórios Spring Data
+│   │   └── doc/            # Configuração Swagger
+│   └── resources/
+│       └── application.properties
+```
+
+## 🧪 Testes
+
+Execute os testes com:
+```bash
+./mvnw test
+```
+
+## 🔧 Configurações Adicionais
+
+### Swagger Config
+- Base Package: `ProjetoDio.Marca.Model`
+- Versão da API: 1.0
+- Formato: JSON
+
+### Dependências Principais
+- **Spring Boot Starter Data JPA** - Persistência de dados
+- **Spring Boot Starter Validation** - Validações
+- **Spring Boot Starter Web** - API REST
+- **SpringFox Swagger** - Documentação
+- **Lombok** - Redução de boilerplate
+
+## 👥 Desenvolvimento
+
+### Padrões Utilizados
+- **MVC** (Model-View-Controller)
+- **Repository Pattern**
+- **Service Layer**
+- **RESTful APIs**
+
+### Boas Práticas Implementadas
+- ✅ Separação de responsabilidades
+- ✅ Injeção de dependências
+- ✅ Validação de dados
+- ✅ Tratamento de exceções
+- ✅ Documentação automatizada
+
